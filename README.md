@@ -11,7 +11,6 @@ Program functionality: text translation, with file download available.
 ![изображение](https://user-images.githubusercontent.com/63222456/169681681-c99c2fd1-488b-4e17-bfe4-1d0e3a1da5e1.png)
 
 Technologies used:
-.NET 5.0
-ASP.NET Core with MVC
+.NET 5.0, ASP.NET Core with MVC
 
 
