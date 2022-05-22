@@ -1,0 +1,61 @@
+﻿@model YandexTranslator.Models.TranslateText
+@{
+    ViewData["Title"] = "sgkTranslator";
+}
+
+<div class="container">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Ваш текст:</label>
+                <textarea asp-for="Text" id = "textArray" class="form-control"></textarea>
+            </div>
+            <div class ="row">
+                 <div class ="col-4">
+                         <input asp-action="Index" type="submit" value="Перевод вашего текста" class="btn btn-outline-primary" /> 
+                </div>
+                <div class ="col-4">
+                        <input type="file" name="files" id="uploadBox" multiple class="form-control" onchange="readFile(this)" /> 
+                </div>
+            </div>
+
+            <div class="form-group">
+                
+                @if (@Model!= null) {
+                    <label  class="control-label">Перевод на русский язык c @Model.Language: </label>
+                    <p>@Model.TranslateTexts</p>
+                }
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+  function readFile(input) {
+      let file = input.files[0];
+
+      let reader = new FileReader();
+
+      reader.readAsText(file);
+
+      reader.onload = function() {
+        console.log(reader.result);
+        
+        const textArray = document.getElementById("textArray")
+        textArray.value += reader.result
+      };
+
+
+      reader.onerror = function() {
+        console.log(reader.error);
+      };
+
+}
+</script>
+}
